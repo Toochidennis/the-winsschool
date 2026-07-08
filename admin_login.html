@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in to manage The Wins School news posts." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#06143d" />
+    <title>Admin Login | The Wins School</title>
+    <link rel="icon" type="image/png" href="winsschool/winschool-mark.png" />
+    <link rel="apple-touch-icon" href="winsschool/winschool-mark.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="admin-login-body">
+    <main class="admin-login-page">
+      <section class="admin-login-card" aria-labelledby="admin-login-title">
+        <a class="admin-login-brand" href="./" aria-label="Back to The Wins School website">
+          <img src="winsschool/winschool-mark.png" alt="The Wins School logo" />
+          <span><strong>THE WINS SCHOOL</strong><small>In Pursuit of Excellence</small></span>
+        </a>
+        <div class="admin-login-copy">
+          <p class="kicker">Admin</p>
+          <h1 id="admin-login-title">Sign in</h1>
+          <p>Manage school news posts and notices.</p>
+        </div>
+        <form id="admin-login-form" class="admin-form" novalidate>
+          <div class="form-field full">
+            <label for="admin-username">Username or email</label>
+            <input id="admin-username" name="username" type="text" required autocomplete="username" />
+          </div>
+          <div class="form-field full">
+            <label for="admin-password">Password</label>
+            <input id="admin-password" name="password" type="password" required autocomplete="current-password" />
+          </div>
+          <button class="btn btn-primary btn-block full" type="submit">Sign in</button>
+        </form>
+        <p id="admin-login-message" class="admin-login-error" role="alert"></p>
+        <p class="admin-login-footnote">For authorised school staff only.</p>
+      </section>
+    </main>
+    <script type="module" src="src/admin-login.js"></script>
+  </body>
+</html>

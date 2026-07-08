@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create or edit The Wins School news posts." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#06143d" />
+    <title>News Editor | The Wins School</title>
+    <link rel="icon" type="image/png" href="winsschool/winschool-mark.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="admin-brand" href="admin_news" aria-label="The Wins School admin home">
+          <img src="winsschool/winschool-mark.png" alt="The Wins School logo" />
+          <div><strong>THE WINS SCHOOL</strong><span>Admin</span></div>
+        </a>
+        <nav class="admin-nav" aria-label="Admin navigation">
+          <a href="admin_news" data-admin-nav="news">News</a>
+          <a href="admin_news_form" data-admin-nav="create">New Post</a>
+          <a href="news" target="_blank" rel="noreferrer">View Site</a>
+          <button type="button" data-admin-logout>Logout</button>
+        </nav>
+      </aside>
+      <section class="admin-content">
+        <header class="admin-page-head compact">
+          <div>
+            <p class="admin-eyebrow">News</p>
+            <h1 id="news-form-title">New Post</h1>
+            <p>Keep the title clear and the message short.</p>
+          </div>
+          <a class="btn btn-outline" href="admin_news">Back to News</a>
+        </header>
+
+        <form id="news-form" class="admin-editor" novalidate>
+          <section class="admin-panel admin-editor-main">
+            <div class="form-field full">
+              <label for="news-title">Title</label>
+              <input id="news-title" type="text" required placeholder="Example: Admission for the new academic session" />
+            </div>
+            <div class="form-field full">
+              <label for="news-summary">Summary</label>
+              <textarea id="news-summary" required rows="3" placeholder="One or two sentences shown on news cards."></textarea>
+            </div>
+            <div class="form-field full">
+              <label for="news-content">Full content</label>
+              <textarea id="news-content" required rows="12" placeholder="Write the full notice or update here."></textarea>
+            </div>
+          </section>
+
+          <aside class="admin-panel admin-editor-side">
+            <div class="form-field full">
+              <label for="news-category">Category</label>
+              <select id="news-category"></select>
+            </div>
+            <div class="form-field full">
+              <label for="news-image">Featured image</label>
+              <select id="news-image"></select>
+            </div>
+            <div class="form-field full">
+              <label for="news-slug">URL slug</label>
+              <input id="news-slug" type="text" required />
+              <small class="field-help">Generated from the title. Edit only when needed.</small>
+            </div>
+            <div class="form-field full">
+              <label for="news-status">Status</label>
+              <select id="news-status">
+                <option value="Draft">Draft</option>
+                <option value="Published">Published</option>
+              </select>
+            </div>
+            <div class="admin-editor-actions">
+              <button class="btn btn-outline" data-submit-mode="draft" type="button">Save Draft</button>
+              <button class="btn btn-primary" data-submit-mode="publish" type="button">Publish</button>
+              <button class="btn btn-light" data-news-cancel type="button">Cancel</button>
+            </div>
+            <p class="admin-form-note">Posts are saved to the server. Published posts appear on the public News page.</p>
+          </aside>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="src/admin-news-form.js"></script>
+  </body>
+</html>

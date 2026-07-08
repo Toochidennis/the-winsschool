@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Access The Wins School staff portal." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://thewinsschool.com.ng/staff_login" />
+    <meta name="theme-color" content="#06143d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Wins School" />
+    <meta property="og:title" content="Staff Login | The Wins School Portal" />
+    <meta property="og:description" content="Access The Wins School staff portal." />
+    <meta property="og:url" content="https://thewinsschool.com.ng/staff_login" />
+    <meta property="og:image" content="https://thewinsschool.com.ng/winsschool/winschool.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Staff Login | The Wins School Portal" />
+    <meta name="twitter:description" content="Access The Wins School staff portal." />
+    <meta name="twitter:image" content="https://thewinsschool.com.ng/winsschool/winschool.png" />
+    <title>Staff Login | The Wins School Portal</title>
+    <link rel="icon" type="image/png" href="winsschool/winschool-mark.png" />
+    <link rel="apple-touch-icon" href="winsschool/winschool-mark.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="src/styles.css" />
+
+  </head>
+  <body>
+    <header class="site-header" data-site-header>
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="brand" href="./" aria-label="The Wins School home">
+          <img class="brand-logo" src="winsschool/winschool-mark.png" alt="The Wins School logo" />
+          <span class="brand-copy"><span class="brand-title">THE WINS SCHOOL</span><span class="brand-subtitle">In Pursuit of Excellence</span></span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+        <div class="nav-panel">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="./">Home</a></li>
+            <li><a class="nav-link" href="about">About</a></li>
+            <li><a class="nav-link" href="contactus">Contact Us</a></li>
+            <li><a class="nav-link" href="news">News</a></li>
+            <li class="portal-menu">
+              <button class="portal-toggle active" type="button" aria-expanded="false">Portal <span aria-hidden="true">⌄</span></button>
+              <ul class="portal-dropdown">
+                <li><a href="student_login">Student Login</a></li>
+                <li><a href="staff_login">Staff Login</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class="btn btn-primary nav-cta" href="enroll_now">Enroll Now <span aria-hidden="true">→</span></a>
+        </div>
+      </nav>
+    </header>
+    <main class="portal-page staff-portal">
+      <section class="login-shell" aria-label="Staff Login">
+        <div class="login-info">
+          <div><span class="eyebrow light">Access Our Portal</span><h1>Staff Login</h1><p>Use your correct credentials to access available school portal services.</p></div>
+          <ul>
+            <li>Enter your username in the form provided.</li>
+            <li>Enter your password appropriately in the field provided.</li>
+            <li>If the username and password are correct, you will be granted access to the portal.</li>
+            <li>Use the portal menu to access available school services.</li>
+            <li>Remember to log out once you are done with the portal.</li>
+          </ul>
+        </div>
+        <div class="login-card">
+          <img class="brand-mini" src="winsschool/winschool-mark.png" alt="The Wins School logo" />
+          <p class="kicker">Portal Access</p><h2>Staff Login</h2><p>Enter your details below to continue.</p>
+          <form action="" method="post" class="form-grid single-form">
+            <div class="form-field full"><label for="staffUsername">Username</label><input id="staffUsername" name="username" type="text" placeholder="Enter username" autocomplete="username" required /></div>
+            <div class="form-field full"><label for="staffPassword">Password</label><div class="password-wrap"><input id="staffPassword" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required /><button class="reveal-password" data-target="staffPassword" type="button" aria-pressed="false">Show</button></div></div>
+            <button class="btn btn-primary btn-block full" type="submit">Login <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="portal-note">Having issues? <a href="contactus">Contact the school</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

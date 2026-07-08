@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Manage The Wins School news posts." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#06143d" />
+    <title>News Admin | The Wins School</title>
+    <link rel="icon" type="image/png" href="winsschool/winschool-mark.png" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="admin-brand" href="admin_news" aria-label="The Wins School admin home">
+          <img src="winsschool/winschool-mark.png" alt="The Wins School logo" />
+          <div><strong>THE WINS SCHOOL</strong><span>Admin</span></div>
+        </a>
+        <nav class="admin-nav" aria-label="Admin navigation">
+          <a href="admin_news" data-admin-nav="news">News</a>
+          <a href="admin_news_form" data-admin-nav="create">New Post</a>
+          <a href="news" target="_blank" rel="noreferrer">View Site</a>
+          <button type="button" data-admin-logout>Logout</button>
+        </nav>
+      </aside>
+      <section class="admin-content">
+        <header class="admin-page-head">
+          <div>
+            <p class="admin-eyebrow">News</p>
+            <h1>News Posts</h1>
+            <p>Write, edit, publish, or remove school updates.</p>
+          </div>
+          <a class="btn btn-primary" href="admin_news_form">New Post</a>
+        </header>
+
+        <section class="admin-panel admin-toolbar" aria-label="News filters">
+          <div class="form-field admin-search-field">
+            <label for="admin-news-search">Search</label>
+            <input id="admin-news-search" type="search" placeholder="Search by title or summary" />
+          </div>
+          <div class="form-field">
+            <label for="admin-news-status">Status</label>
+            <select id="admin-news-status">
+              <option value="all">All</option>
+              <option value="Published">Published</option>
+              <option value="Draft">Draft</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="admin-panel admin-table-panel" aria-label="News posts">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Post</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Updated</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-news-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="src/admin-news.js"></script>
+  </body>
+</html>
