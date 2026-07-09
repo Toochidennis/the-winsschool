@@ -75,8 +75,8 @@ function rowMarkup(item) {
     <td>${escapeHtml(formatUpdated(item.updatedAt))}</td>
     <td>
       <div class="admin-table-actions">
-        <a class="admin-link-button" href="admin_news_form?id=${encodeURIComponent(item.id)}">Edit</a>
-        <a class="admin-link-button" href="news_detail?slug=${encodeURIComponent(item.slug)}&preview=1" target="_blank" rel="noreferrer">View</a>
+        <a class="admin-link-button" href="admin_news_form.html?id=${encodeURIComponent(item.id)}">Edit</a>
+        <a class="admin-link-button" href="news_detail.html?slug=${encodeURIComponent(item.slug)}&preview=1" target="_blank" rel="noreferrer">View</a>
         ${toggleAction}
         <button class="admin-link-button danger" data-action="delete" data-id="${item.id}">Delete</button>
       </div>

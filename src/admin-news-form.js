@@ -120,7 +120,7 @@ async function init() {
       } else {
         await createNews(payload);
       }
-      window.location.href = 'admin_news';
+      window.location.href = 'admin_news.html';
     } catch {
       window.alert('Failed to save. Please try again.');
       button.disabled = false;
@@ -129,7 +129,7 @@ async function init() {
 
   document.querySelector('[data-news-cancel]')?.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = 'admin_news';
+    window.location.href = 'admin_news.html';
   });
 }
 

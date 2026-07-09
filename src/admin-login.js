@@ -19,6 +19,6 @@ if (form) {
     }
 
     if (message) message.textContent = '';
-    window.location.href = 'admin_news';
+    window.location.href = 'admin_news.html';
   });
 }

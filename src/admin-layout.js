@@ -20,7 +20,7 @@ export async function setupAdminLayout() {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
       await logout();
-      window.location.href = 'admin_login';
+      window.location.href = 'admin_login.html';
     });
   });
 

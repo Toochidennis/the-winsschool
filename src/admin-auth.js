@@ -118,7 +118,7 @@ export async function getCurrentAdmin() {
 export async function requireAdmin() {
   const admin = await getCurrentAdmin();
   if (!admin) {
-    window.location.href = 'admin_login';
+    window.location.href = 'admin_login.html';
     return null;
   }
   return admin;
