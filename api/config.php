@@ -11,7 +11,7 @@
 // Generate a new hash with: php -r "echo password_hash('your_password', PASSWORD_BCRYPT);"
 // Change this password before production!
 define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD_HASH', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy'); // admin123
+define('ADMIN_PASSWORD_HASH', '$2y$12$jaOPSG/Du3aT5q8DIpVLfeH78S3vn7oH9LstKcdvELD38ojnDZUPq'); // admin123
 
 // -------------------------------------------------------
 // Data file paths

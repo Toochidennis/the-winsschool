@@ -2,7 +2,7 @@
  * The Wins School — CSRF helper for admin API calls.
  *
  * Usage:
- *   const res = await csrfFetch('/api/admin-news.php', { method: 'POST', body: JSON.stringify(payload) });
+ *   const res = await csrfFetch('api/admin-news.php', { method: 'POST', body: JSON.stringify(payload) });
  */
 
 let cachedToken = null;
@@ -10,7 +10,7 @@ let cachedToken = null;
 export async function getCsrfToken() {
   if (cachedToken) return cachedToken;
 
-  const res = await fetch('/api/csrf.php', { credentials: 'include' });
+  const res = await fetch('api/csrf.php', { credentials: 'include' });
   if (!res.ok) {
     cachedToken = null;
     return null;

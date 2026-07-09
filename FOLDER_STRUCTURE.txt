@@ -1,0 +1,32 @@
+Development source folder:
+
+api/                 PHP endpoints for news/admin
+  admin-login.php
+  admin-logout.php
+  admin-me.php
+  admin-news.php
+  config.php
+  csrf.php
+  helpers.php
+  news.php
+
+data/                Server-side JSON news storage
+  .htaccess          blocks direct access on Apache
+  news.json          initial/default news posts
+
+src/                 Frontend JS/CSS source
+winsschool/          Real school image assets; copied into dist by Vite
+*.html               Public/admin pages
+.htaccess            Apache clean URL config
+vite.config.js       Builds HTML/assets and copies api,data,winsschool into dist
+package.json         Vite dev/build scripts
+
+Deployment output after npm run build:
+
+dist/
+  *.html
+  assets/
+  winsschool/
+  api/
+  data/
+  .htaccess

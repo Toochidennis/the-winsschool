@@ -109,6 +109,14 @@ function unique_slug(string $slug, array $posts, ?string $ignoreId = null): stri
 }
 
 // -------------------------------------------------------
+// Image path helper
+// -------------------------------------------------------
+function normalize_image_path(string $image): string {
+    // Store relative paths so the site works both at domain root and in a subfolder like /wins.
+    return ltrim(trim($image), '/');
+}
+
+// -------------------------------------------------------
 // Sanitize post input
 // -------------------------------------------------------
 function sanitize_post(array $input): array {
@@ -118,7 +126,7 @@ function sanitize_post(array $input): array {
         'category'=> trim(strip_tags($input['category'] ?? 'Notice')),
         'summary' => trim(strip_tags($input['summary'] ?? '')),
         'content' => trim($input['content'] ?? ''),
-        'image'   => trim(strip_tags($input['image'] ?? '')),
+        'image'   => normalize_image_path(strip_tags($input['image'] ?? '')),
         'status'  => trim(strip_tags($input['status'] ?? 'draft')),
     ];
 }
@@ -127,22 +135,23 @@ function sanitize_post(array $input): array {
 // Image allowlist
 // -------------------------------------------------------
 function is_allowed_image(string $image): bool {
+    $image = normalize_image_path($image);
     $allowed = [
-        '/winsschool/IMG_3203.JPG',
-        '/winsschool/IMG_5418.JPG',
-        '/winsschool/IMG_5886.JPG',
-        '/winsschool/IMG_4402.JPG',
-        '/winsschool/foot.JPG',
-        '/winsschool/IMG_5373.JPG',
-        '/winsschool/IMG_5368.JPG',
-        '/winsschool/optimized/classroom.webp',
-        '/winsschool/optimized/campus.webp',
-        '/winsschool/optimized/field.webp',
-        '/winsschool/optimized/kids.webp',
-        '/winsschool/optimized/reception.webp',
-        '/winsschool/optimized/sports.webp',
-        '/winsschool/optimized/sickbay.webp',
-        '/winsschool/optimized/admin.webp',
+        'winsschool/IMG_3203.JPG',
+        'winsschool/IMG_5418.JPG',
+        'winsschool/IMG_5886.JPG',
+        'winsschool/IMG_4402.JPG',
+        'winsschool/foot.JPG',
+        'winsschool/IMG_5373.JPG',
+        'winsschool/IMG_5368.JPG',
+        'winsschool/optimized/classroom.webp',
+        'winsschool/optimized/campus.webp',
+        'winsschool/optimized/field.webp',
+        'winsschool/optimized/kids.webp',
+        'winsschool/optimized/reception.webp',
+        'winsschool/optimized/sports.webp',
+        'winsschool/optimized/sickbay.webp',
+        'winsschool/optimized/admin.webp',
     ];
     return in_array($image, $allowed, true);
 }
@@ -182,7 +191,7 @@ function get_default_posts(): array {
             'category'  => 'Admissions',
             'summary'   => 'Parents and guardians can contact the school office for admission information, forms, and entrance examination guidance.',
             'content'   => "The Wins School welcomes parents and guardians seeking admission for the new academic session. For accurate admission guidance, families should contact the school office directly.\n\nThe admissions team will provide current form requirements, payment direction, and entrance examination instructions where applicable.",
-            'image'     => '/winsschool/optimized/campus.webp',
+            'image'     => 'winsschool/optimized/campus.webp',
             'status'    => 'published',
             'createdAt' => '2026-07-08T10:00:00+01:00',
             'updatedAt' => '2026-07-08T10:00:00+01:00',
@@ -194,7 +203,7 @@ function get_default_posts(): array {
             'category'  => 'School Life',
             'summary'   => 'Our pupils and students take part in academic, creative, sporting, and character-building activities.',
             'content'   => "Learning at The Wins School goes beyond classroom lessons. Pupils and students participate in academic, creative, sporting, and character-building activities that support confidence, teamwork, discipline, and leadership.\n\nThese activities help learners apply values and skills in practical situations.",
-            'image'     => '/winsschool/optimized/classroom.webp',
+            'image'     => 'winsschool/optimized/classroom.webp',
             'status'    => 'published',
             'createdAt' => '2026-07-08T10:00:00+01:00',
             'updatedAt' => '2026-07-08T10:00:00+01:00',
@@ -206,7 +215,7 @@ function get_default_posts(): array {
             'category'  => 'Notice',
             'summary'   => 'Families can reach the school through the official phone numbers, email addresses, or visit the school office during working hours.',
             'content'   => "Parents and guardians can reach The Wins School through official phone numbers and email addresses or by visiting the school office during working hours.\n\nThe school team is available to support enquiries related to admissions, school visits, and general information.",
-            'image'     => '/winsschool/optimized/reception.webp',
+            'image'     => 'winsschool/optimized/reception.webp',
             'status'    => 'published',
             'createdAt' => '2026-07-08T10:00:00+01:00',
             'updatedAt' => '2026-07-08T10:00:00+01:00',

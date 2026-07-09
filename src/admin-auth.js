@@ -24,7 +24,7 @@ let apiAvailable = null;
 async function isApiAvailable() {
   if (apiAvailable !== null) return apiAvailable;
   try {
-    const res = await fetch('/api/admin-me.php', { credentials: 'include' });
+    const res = await fetch('api/admin-me.php', { credentials: 'include' });
     // 200 or 401 both mean the PHP backend exists
     apiAvailable = res.ok || res.status === 401;
   } catch {
@@ -39,7 +39,7 @@ async function isApiAvailable() {
 export async function login(username, password) {
   if (await isApiAvailable()) {
     try {
-      const res = await fetch('/api/admin-login.php', {
+      const res = await fetch('api/admin-login.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -78,7 +78,7 @@ export async function logout() {
 
   if (await isApiAvailable()) {
     try {
-      await fetch('/api/admin-logout.php', { method: 'POST', credentials: 'include' });
+      await fetch('api/admin-logout.php', { method: 'POST', credentials: 'include' });
     } catch { /* ok */ }
   }
 
@@ -91,7 +91,7 @@ export async function logout() {
 export async function getCurrentAdmin() {
   if (await isApiAvailable()) {
     try {
-      const res = await fetch('/api/admin-me.php', { credentials: 'include' });
+      const res = await fetch('api/admin-me.php', { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         return data.admin || null;

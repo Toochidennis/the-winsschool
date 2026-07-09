@@ -36,8 +36,8 @@ function cleanUrlPlugin() {
         const source = resolve(__dirname, file);
         if (existsSync(source)) copyFileSync(source, resolve(dist, file));
       }
-      // Copy PHP API and data folders to dist for Apache/PHP hosting
-      for (const dir of ['api', 'data']) {
+      // Copy PHP API, data, and real school images to dist for Apache/PHP hosting
+      for (const dir of ['api', 'data', 'winsschool']) {
         const srcDir = resolve(__dirname, dir);
         const destDir = resolve(dist, dir);
         if (existsSync(srcDir)) {

@@ -55,7 +55,7 @@ let apiAvailable = null;
 async function isApiAvailable() {
   if (apiAvailable !== null) return apiAvailable;
   try {
-    const res = await fetch('/api/news.php', { method: 'HEAD' });
+    const res = await fetch('api/news.php', { method: 'HEAD' });
     apiAvailable = res.ok || res.status === 405; // 405 = exists but HEAD not allowed, server is PHP
     if (res.status === 200 || res.status === 405 || res.status === 401 || res.status === 404) {
       apiAvailable = true;
@@ -72,7 +72,7 @@ async function isApiAvailable() {
 export async function getPublicNews() {
   if (await isApiAvailable()) {
     try {
-      const res = await fetch('/api/news.php', { credentials: 'include' });
+      const res = await fetch('api/news.php', { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         return data.news || [];
@@ -95,7 +95,7 @@ export async function getNewsBySlug(slug) {
 
   if (await isApiAvailable()) {
     try {
-      const res = await fetch(`/api/news.php?slug=${encodeURIComponent(slug)}`, { credentials: 'include' });
+      const res = await fetch(`api/news.php?slug=${encodeURIComponent(slug)}`, { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         return data.post || null;
@@ -114,7 +114,7 @@ export async function getNewsBySlug(slug) {
 export async function getAdminNews() {
   if (await isApiAvailable()) {
     try {
-      const res = await fetch('/api/admin-news.php', { credentials: 'include' });
+      const res = await fetch('api/admin-news.php', { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         return data.news || [];
@@ -138,7 +138,7 @@ export async function getAdminNewsById(id) {
 
   if (await isApiAvailable()) {
     try {
-      const res = await fetch(`/api/admin-news.php?id=${encodeURIComponent(id)}`, { credentials: 'include' });
+      const res = await fetch(`api/admin-news.php?id=${encodeURIComponent(id)}`, { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         return data.post || null;
@@ -155,7 +155,7 @@ export async function createNews(payload) {
   if (await isApiAvailable()) {
     try {
       const { csrfFetch } = await import('./csrf.js');
-      const res = await csrfFetch('/api/admin-news.php', {
+      const res = await csrfFetch('api/admin-news.php', {
         method: 'POST',
         body: JSON.stringify(payload),
       });
@@ -189,7 +189,7 @@ export async function updateNews(id, payload) {
   if (await isApiAvailable()) {
     try {
       const { csrfFetch } = await import('./csrf.js');
-      const res = await csrfFetch(`/api/admin-news.php?id=${encodeURIComponent(id)}`, {
+      const res = await csrfFetch(`api/admin-news.php?id=${encodeURIComponent(id)}`, {
         method: 'PUT',
         body: JSON.stringify(payload),
       });
@@ -213,7 +213,7 @@ export async function deleteNews(id) {
   if (await isApiAvailable()) {
     try {
       const { csrfFetch } = await import('./csrf.js');
-      const res = await csrfFetch(`/api/admin-news.php?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      const res = await csrfFetch(`api/admin-news.php?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
       return res.ok;
     } catch {
       return false;
@@ -231,7 +231,7 @@ export async function publishNews(id) {
   if (await isApiAvailable()) {
     try {
       const { csrfFetch } = await import('./csrf.js');
-      const res = await csrfFetch(`/api/admin-news.php?action=publish&id=${encodeURIComponent(id)}`, { method: 'POST' });
+      const res = await csrfFetch(`api/admin-news.php?action=publish&id=${encodeURIComponent(id)}`, { method: 'POST' });
       if (res.ok) {
         const data = await res.json();
         return data.post || null;
@@ -253,7 +253,7 @@ export async function unpublishNews(id) {
   if (await isApiAvailable()) {
     try {
       const { csrfFetch } = await import('./csrf.js');
-      const res = await csrfFetch(`/api/admin-news.php?action=unpublish&id=${encodeURIComponent(id)}`, { method: 'POST' });
+      const res = await csrfFetch(`api/admin-news.php?action=unpublish&id=${encodeURIComponent(id)}`, { method: 'POST' });
       if (res.ok) {
         const data = await res.json();
         return data.post || null;

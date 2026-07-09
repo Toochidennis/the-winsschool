@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://thewinsschool.com.ng/sitemap.xml
