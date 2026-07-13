@@ -2,7 +2,7 @@
 
 Static HTML/CSS/JS redesign for The Wins School.
 
-## Run locally
+## Run locall
 
 ```bash
 npm install --no-audit --no-fund
