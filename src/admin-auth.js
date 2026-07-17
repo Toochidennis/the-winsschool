@@ -1,20 +1,10 @@
 /**
  * The Wins School — Admin Auth
  *
- * Primary: PHP API (api/admin-login.php, api/admin-logout.php, api/admin-me.php)
- * Fallback: sessionStorage mock (for Vite dev without PHP)
+ * Admin login requires the PHP API.
  */
 
 import { clearCsrfToken } from './csrf.js';
-
-const ADMIN_SESSION_KEY = 'wins_admin_session_v1';
-
-const MOCK_ADMIN = {
-  id: 'admin-1',
-  name: 'Frontend Admin',
-  username: 'admin',
-  role: 'Super Admin',
-};
 
 // -------------------------------------------------------
 // API mode detection
@@ -55,19 +45,7 @@ export async function login(username, password) {
     }
   }
 
-  // sessionStorage mock fallback
-  const userValue = String(username || '').trim().toLowerCase();
-  const passValue = String(password || '').trim();
-  if (userValue !== 'admin' || passValue !== 'admin123') {
-    return { ok: false, message: 'Invalid admin credentials.' };
-  }
-  const session = {
-    token: `mock-${Math.random().toString(36).slice(2, 12)}`,
-    user: MOCK_ADMIN,
-    loggedInAt: new Date().toISOString(),
-  };
-  sessionStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify(session));
-  return { ok: true, session };
+  return { ok: false, message: 'Admin login requires the PHP server.' };
 }
 
 // -------------------------------------------------------
@@ -81,8 +59,6 @@ export async function logout() {
       await fetch('api/admin-logout.php', { method: 'POST', credentials: 'include' });
     } catch { /* ok */ }
   }
-
-  sessionStorage.removeItem(ADMIN_SESSION_KEY);
 }
 
 // -------------------------------------------------------
@@ -100,16 +76,7 @@ export async function getCurrentAdmin() {
     return null;
   }
 
-  // sessionStorage mock fallback
-  try {
-    const raw = sessionStorage.getItem(ADMIN_SESSION_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (!parsed?.token || !parsed?.user) return null;
-    return parsed.user;
-  } catch {
-    return null;
-  }
+  return null;
 }
 
 // -------------------------------------------------------

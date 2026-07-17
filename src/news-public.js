@@ -19,17 +19,45 @@ function cardMarkup(post) {
   </article>`;
 }
 
+function newsComingSoonMarkup() {
+  return `<article class="news-coming-soon reveal is-visible">
+    <div class="news-coming-copy">
+      <span class="kicker">News Desk</span>
+      <h3>News coming soon</h3>
+      <p>School announcements, notices, and event updates will be available here soon.</p>
+      <a class="btn btn-secondary" href="contactus">Contact the school</a>
+    </div>
+    <div class="speaker-graphic" aria-hidden="true">
+      <div class="speaker-card">
+        <span class="speaker-dot"></span>
+        <span></span><span></span><span></span>
+      </div>
+      <div class="speaker-body">
+        <span class="speaker-mouth"></span>
+        <span class="speaker-handle"></span>
+        <span class="sound-wave wave-one"></span>
+        <span class="sound-wave wave-two"></span>
+        <span class="sound-wave wave-three"></span>
+      </div>
+    </div>
+  </article>`;
+}
+
 async function renderHomeNews() {
   const target = document.getElementById('home-news-grid');
   if (!target) return;
 
   const posts = (await getPublicNews()).slice(0, 3);
   if (!posts.length) {
-    target.innerHTML = '<p class="center-note">No published news yet.</p>';
+    target.innerHTML = newsComingSoonMarkup();
+    const allNewsLink = target.parentElement?.querySelector('.center-note');
+    if (allNewsLink) allNewsLink.hidden = true;
     return;
   }
 
   target.innerHTML = posts.map(cardMarkup).join('');
+  const allNewsLink = target.parentElement?.querySelector('.center-note');
+  if (allNewsLink) allNewsLink.hidden = false;
 }
 
 async function renderNewsListing() {
@@ -54,7 +82,7 @@ async function renderNewsListing() {
     const pagePosts = posts.slice(start, start + perPage);
 
     if (!pagePosts.length) {
-      target.innerHTML = '<p class="center-note">No published news available right now.</p>';
+      target.innerHTML = newsComingSoonMarkup();
       const container = document.getElementById('news-pagination');
       if (container) container.innerHTML = '';
       return;

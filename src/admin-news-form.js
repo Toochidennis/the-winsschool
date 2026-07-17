@@ -17,6 +17,7 @@ async function init() {
   const statusInput = document.getElementById('news-status');
   const form = document.getElementById('news-form');
   const pageTitle = document.getElementById('news-form-title');
+  let alertArea = null;
 
   function toSlug(value) {
     return String(value || '')
@@ -98,6 +99,37 @@ async function init() {
     return missing;
   }
 
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function getAlertArea() {
+    if (alertArea) return alertArea;
+    alertArea = document.createElement('div');
+    alertArea.className = 'admin-alert-stack';
+    form?.parentElement?.insertBefore(alertArea, form);
+    return alertArea;
+  }
+
+  function showFormMessage(message, type = 'error') {
+    const area = getAlertArea();
+    area.innerHTML = `<div class="admin-alert ${type}" role="alert">
+      <div>
+        <strong>${type === 'success' ? 'Done' : 'Please check this'}</strong>
+        <p>${escapeHtml(message)}</p>
+      </div>
+      <button type="button" aria-label="Dismiss message">Close</button>
+    </div>`;
+    area.querySelector('button')?.addEventListener('click', () => {
+      area.innerHTML = '';
+    });
+  }
+
   form?.addEventListener('click', async (event) => {
     const button = event.target.closest('button[data-submit-mode]');
     if (!button) return;
@@ -108,7 +140,7 @@ async function init() {
     const payload = collectPayload(apiStatus);
     const missing = validate(payload);
     if (missing.length) {
-      window.alert(`Please enter ${missing.join(', ')}.`);
+      showFormMessage(`Please enter ${missing.join(', ')}.`);
       return;
     }
 
@@ -122,7 +154,7 @@ async function init() {
       }
       window.location.href = 'admin_news.html';
     } catch {
-      window.alert('Failed to save. Please try again.');
+      showFormMessage('Failed to save. Please try again.');
       button.disabled = false;
     }
   });
